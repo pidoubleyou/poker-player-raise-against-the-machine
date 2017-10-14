@@ -12,7 +12,37 @@ namespace PokerTest
     public class EvaluatorTest
     {
         [TestMethod]
-        public void GetScore_SameRank_Ass ()
+        public void GetScore_PairWithHandCards_Pair()
+        {
+            var target = new Evaluator();
+            var cards = new List<Card>();
+            cards.Add(new Card { Rank = "A", Suit = "Clubs" });
+            cards.Add(new Card { Rank = "6", Suit = "Clubs" });
+            cards.Add(new Card { Rank = "7", Suit = "Clubs" });
+            cards.Add(new Card { Rank = "A", Suit = "Clubs" });
+            cards.Add(new Card { Rank = "5", Suit = "Spades" });
+
+            var score = target.GetScore(cards);
+
+            Assert.AreEqual(7, score);
+        }
+        [TestMethod]
+        public void GetScore_PairWithCommunityCards_NoScore()
+        {
+            var target = new Evaluator();
+            var cards = new List<Card>();
+            cards.Add(new Card { Rank = "A", Suit = "Clubs" });
+            cards.Add(new Card { Rank = "6", Suit = "Clubs" });
+            cards.Add(new Card { Rank = "7", Suit = "Clubs" });
+            cards.Add(new Card { Rank = "7", Suit = "Clubs" });
+            cards.Add(new Card { Rank = "5", Suit = "Spades" });
+
+            var score = target.GetScore(cards);
+
+            Assert.AreEqual(0, score);
+        }
+        [TestMethod]
+        public void GetScore_SameRank_Ass()
         {
             var target = new Evaluator();
             var cards = new List<Card>();

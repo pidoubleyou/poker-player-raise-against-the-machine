@@ -54,7 +54,7 @@ namespace Nancy.Simple
 
         private int GetScoreAllCards(List<Card> cards)
         {
-            var communityCards = new List<Card>();
+            var communityCards = cards.Skip(2).ToList();
             if (ContainsMulitpleCards(cards, 4))
             {
                 return 10;
@@ -81,9 +81,8 @@ namespace Nancy.Simple
             }
             if (ContainsMulitpleCards(cards, 2))
             {
-                //var 
-                //if (ContainsMulitpleCards(cards.s))
-                return 7;
+                if (!ContainsMulitpleCards(communityCards, 2)) 
+                    return 7;
             }
             return 0;
         }
