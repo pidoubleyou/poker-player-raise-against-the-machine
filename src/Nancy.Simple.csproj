@@ -81,7 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardColors.cs" />
+    <Compile Include="CardEnums.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Deserializer.cs" />
     <Compile Include="Evaluator.cs" />
