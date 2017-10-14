@@ -54,8 +54,27 @@ namespace Nancy.Simple
 
         private int GetScoreAllCards(List<Card> cards)
         {
+            if (ContainsTriple(cards))
+            {
+                return 9;
+            }
+            if (ContainsPair(cards))
+            {
+                return 8;
+            }
             return GetScoreHandCards(cards);
         }
 
+        public bool ContainsTriple(List<Card> cards)
+        {
+            var groupList = cards.GroupBy(c => c.Value);
+            return groupList.Any(g => g.Count() == 3);
+        }
+
+        public bool ContainsPair(List<Card> cards)
+        {
+            var groupList = cards.GroupBy(c => c.Value);
+            return groupList.Any(g => g.Count() == 2);
+        }
     }
 }
