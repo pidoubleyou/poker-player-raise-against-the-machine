@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 using System;
 
 namespace Nancy.Simple
@@ -19,9 +20,14 @@ namespace Nancy.Simple
             var calculator = new BetCalculator();
             var betLevelProvider = new BetLevelProvider();
 
-            var state = eval.GetScore(gameState.Self.Cards);
+            var allCards = new List<Card>();
+            allCards.AddRange(gameState.Self.Cards);
+            allCards.AddRange(gameState.CommunityCards);
+
+            var state = eval.GetScore(allCards);
+
             return calculator.calculate(gameState, state, betLevelProvider.GetBetLevel(gameState));
-		}
+        }
 
 		public static void ShowDown(JObject gameState)
 		{
