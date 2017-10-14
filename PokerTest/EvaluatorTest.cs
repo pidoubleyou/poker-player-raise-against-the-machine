@@ -25,6 +25,19 @@ namespace PokerTest
         }
 
         [TestMethod]
+        public void GetScore_SameRankKleineKarte()
+        {
+            var target = new Evaluator();
+            var cards = new Card[2];
+            cards[0] = new Card { Rank = "7" };
+            cards[1] = new Card { Rank = "7" };
+
+            var score = target.GetScore(cards);
+
+            Assert.AreEqual(State.Raise, score);
+        }
+
+        [TestMethod]
         public void GetScore_SameColor()
         {
             var target = new Evaluator();

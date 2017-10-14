@@ -9,10 +9,20 @@ namespace Nancy.Simple
     {
         public State GetScore (Card[] cards)
         {
-            if (IsPair(cards))
+            // Pärchen behandeln
+            if (IsPair(cards) && GetSumCards(cards) > 20)
                 return State.AllIn;
+            if (IsPair(cards))
+                return State.Raise;
 
-            if (IsSameColor(cards))
+            // Höhe der Karte
+            if (IsSameColor(cards) && GetSumCards(cards) > 25)
+                return State.AllIn;
+            if (IsSameColor(cards) && GetSumCards(cards) > 12)
+                return State.Raise;
+            if (GetSumCards(cards) > 25)
+                return State.Raise;
+            if (GetSumCards(cards) > 21)
                 return State.Call;
 
             return State.Fold;
@@ -26,6 +36,11 @@ namespace Nancy.Simple
         public static bool IsSameColor(Card[] cards)
         {
             return cards[0].Suit == cards[1].Suit;
+        }
+
+        public static int GetSumCards(Card[] cards)
+        {
+            return 10;
         }
     }
 }
