@@ -58,6 +58,10 @@ namespace Nancy.Simple
             {
                 return 10;
             }
+            if (ContainsFlush(cards))
+            {
+                return 10;
+            }
             if (ContainsMulitpleCards(cards, 3))
             {
                 return 9;
@@ -71,6 +75,12 @@ namespace Nancy.Simple
                 return 7;
             }
             return 0;
+        }
+
+        public bool ContainsFlush(List<Card> cards)
+        {
+            var groupList = cards.GroupBy(c => c.Suit);
+            return groupList.Any(g => g.Count() >= 5);
         }
 
         public bool ContainsMulitpleCards(List<Card> cards, int countKind)

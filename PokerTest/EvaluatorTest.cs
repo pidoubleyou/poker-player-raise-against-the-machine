@@ -81,7 +81,7 @@ namespace PokerTest
 
             var score = target.GetScore(cards);
 
-            Assert.AreEqual(10, score);
+            Assert.AreEqual(8, score);
         }
         [TestMethod]
         public void GetScore_SameColor_Raise()
@@ -95,7 +95,7 @@ namespace PokerTest
 
             var score = target.GetScore(cards);
 
-            Assert.AreEqual(8, score);
+            Assert.AreEqual(7, score);
         }
 
         [TestMethod]
@@ -195,6 +195,40 @@ namespace PokerTest
             };
 
             var score = target.ContainsTwoPair(cards);
+
+            Assert.IsFalse(score);
+        }
+        [TestMethod]
+        public void ContainsFlush_Flush_True()
+        {
+            var target = new Evaluator();
+            var cards = new List<Card>
+            {
+                new Card { Rank = "A", Suit = "Pik" },
+                new Card { Rank = "7", Suit = "Pik" },
+                new Card { Rank = "A", Suit = "Pik" },
+                new Card { Rank = "8", Suit = "Pik" },
+                new Card { Rank = "7", Suit = "Pik" }
+            };
+
+            var score = target.ContainsFlush(cards);
+
+            Assert.IsTrue(score);
+        }
+        [TestMethod]
+        public void ContainsTwoPair_NoFlush_False()
+        {
+            var target = new Evaluator();
+            var cards = new List<Card>
+            {
+                new Card { Rank = "A", Suit = "Pik" },
+                new Card { Rank = "7", Suit = "XY" },
+                new Card { Rank = "A", Suit = "Pik" },
+                new Card { Rank = "9", Suit = "Pik" },
+                new Card { Rank = "K", Suit = "Pik" }
+            };
+
+            var score = target.ContainsFlush(cards);
 
             Assert.IsFalse(score);
         }
