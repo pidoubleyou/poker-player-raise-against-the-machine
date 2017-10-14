@@ -20,6 +20,7 @@ namespace Nancy.Simple
     }
     public class PlayerInfo
     {
+        public int Bet { get; set; }
         public string Name { get; set; }
         public int Stack { get; set; }
         [JsonProperty("hole_cards")]

@@ -20,7 +20,7 @@
       "name":"Player 2",
       "stack":1000,
       "status":"active",
-      "bet":0,
+      "bet":20,
       "hole_cards":[{
                     "rank": "6",                    // Rank of the card. Possible values are numbers 2-10 and J,Q,K,A
                     "suit": "hearts"                // Suit of the card. Possible values are: clubs,spades,hearts,diamonds

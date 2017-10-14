@@ -32,8 +32,8 @@ namespace PokerTest
                 Pot = 20,
                 Players = new PlayerInfo[]
                 {
-                    new PlayerInfo { Name = "Player 1", Stack = 1000, Cards = new Card[] { new Card { Rank = "7", Suit = "spades" }, new Card { Rank = "7", Suit = "hearts" } } },
-                    new PlayerInfo { Name = "Player 2", Stack = 1000,Cards = new Card[] { new Card { Rank = "6", Suit = "hearts" }, new Card { Rank = "K", Suit = "spades" } } }
+                    new PlayerInfo { Name = "Player 1", Bet= 0, Stack = 1000, Cards = new Card[] { new Card { Rank = "7", Suit = "spades" }, new Card { Rank = "7", Suit = "hearts" } } },
+                    new PlayerInfo { Name = "Player 2", Bet = 20, Stack = 1000,Cards = new Card[] { new Card { Rank = "6", Suit = "hearts" }, new Card { Rank = "K", Suit = "spades" } } }
                 }
             };
 
@@ -51,6 +51,7 @@ namespace PokerTest
             Assert.AreEqual(expectedGameState.Players.Count(), actual.Players.Count());
             for(int i = 0; i < expectedGameState.Players.Count(); i++)
             {
+                Assert.AreEqual(expectedGameState.Players[i].Bet, actual.Players[i].Bet);
                 Assert.AreEqual(expectedGameState.Players[i].Name, actual.Players[i].Name);
                 Assert.AreEqual(expectedGameState.Players[i].Stack, actual.Players[i].Stack);
 
