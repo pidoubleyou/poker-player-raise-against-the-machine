@@ -59,12 +59,16 @@
     <Compile Include="PlayerInfoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CardEnumTest.cs" />
+    <Compile Include="PokerPlayerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bet_sample_with_community_cards.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="bet_sample_no_community_cards.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="game_state_sample_round16.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
