@@ -46,7 +46,7 @@ namespace Nancy.Simple
                 return false;
             }
 
-            if(Stack * HighRaisePercentage <= Bet)
+            if((Stack + Bet) * HighRaisePercentage <= Bet)
             {
                 return true;
             }
