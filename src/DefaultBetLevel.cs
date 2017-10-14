@@ -3,9 +3,9 @@ namespace Nancy.Simple
 {
     public class DefaultBetLevel : IBetLevel
     {
-        public int FoldLevel { get; }
-        public int CallLevel { get; }
-        public int RaiseLevel { get; }
+        public int FoldLevel { get; private set; }
+        public int CallLevel { get; private set; }
+        public int RaiseLevel { get; private set; }
 
         public DefaultBetLevel()
         {
