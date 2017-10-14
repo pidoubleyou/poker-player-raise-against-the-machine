@@ -82,12 +82,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BetCalculator.cs" />
+    <Compile Include="BetLevelProvider.cs" />
     <Compile Include="CardEnums.cs" />
     <Compile Include="CardEnumsExtensions.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="DefaultBetLevel.cs" />
     <Compile Include="Deserializer.cs" />
     <Compile Include="Evaluator.cs" />
     <Compile Include="GameState.cs" />
+    <Compile Include="HeadsUpBetLevel.cs" />
+    <Compile Include="IBetLevel.cs" />
     <Compile Include="MainModule.cs" />
     <Compile Include="App.cs" />
     <Compile Include="PokerPlayer.cs" />

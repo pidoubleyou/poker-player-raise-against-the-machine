@@ -12,17 +12,19 @@ namespace PokerTest
     public class BetCalculatorTest
     {
         private BetCalculator target;
+        private IBetLevel betLevel;
 
         [TestInitialize]
         public void TestInitialize()
         {
             target = new BetCalculator();
+            betLevel = new DefaultBetLevel();
         }
 
         [TestMethod]
         public void calculateTestReturnsNullIfFold()
         {
-            var actual = target.calculate(new GameState(), 0);
+            var actual = target.calculate(new GameState(), 0, betLevel);
 
             Assert.AreEqual(0, actual);
         }
@@ -39,7 +41,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, 6);
+            var actual = target.calculate(gameState, 6, betLevel);
 
             Assert.AreEqual(10, actual);
         }
@@ -56,7 +58,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, 6);
+            var actual = target.calculate(gameState, 6, betLevel);
 
             Assert.AreEqual(0, actual);
         }
@@ -73,7 +75,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, 6);
+            var actual = target.calculate(gameState, 6, betLevel);
 
             Assert.AreEqual(20, actual);
         }
@@ -90,7 +92,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, 6);
+            var actual = target.calculate(gameState, 6, betLevel);
 
             Assert.AreEqual(0, actual);
         }
@@ -108,7 +110,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, 10);
+            var actual = target.calculate(gameState, 10, betLevel);
 
             Assert.AreEqual(877, actual);
         }
@@ -126,7 +128,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, 8);
+            var actual = target.calculate(gameState, 8, betLevel);
 
             Assert.AreEqual(155, actual);
 
@@ -145,7 +147,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, 8);
+            var actual = target.calculate(gameState, 8, betLevel);
 
             Assert.AreEqual(223, actual);
 

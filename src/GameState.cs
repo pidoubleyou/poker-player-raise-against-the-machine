@@ -33,6 +33,7 @@ namespace Nancy.Simple
         public int Bet { get; set; }
         public string Name { get; set; }
         public int Stack { get; set; }
+        public string Status { get; set; }
         [JsonProperty("hole_cards")]
         public Card[] Cards { get; set; }
     }
@@ -53,6 +54,17 @@ namespace Nancy.Simple
         public PlayerInfo Self { get
             {
                 return Players.FirstOrDefault(x => x.Name == Constants.PlayerName);
+            }
+        }
+
+        public bool IsHeadsUp
+        {
+            get
+            {
+                var activePlayers = Players.Count(x => x.Status == "active");
+                var foldedPlayers = Players.Count(x => x.Status == "folded");
+
+                return activePlayers == 2 && foldedPlayers == 0;
             }
         }
     }
