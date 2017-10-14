@@ -56,5 +56,16 @@ namespace Nancy.Simple
                 return Players.FirstOrDefault(x => x.Name == Constants.PlayerName);
             }
         }
+
+        public bool IsHeadsUp
+        {
+            get
+            {
+                var activePlayers = Players.Count(x => x.Status == "active");
+                var foldedPlayers = Players.Count(x => x.Status == "folded");
+
+                return activePlayers == 2 && foldedPlayers == 0;
+            }
+        }
     }
 }

@@ -1,24 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Nancy.Simple
+﻿namespace Nancy.Simple
 {
     public class BetCalculator
     {
         private const double MaximumCallBet = 0.2;
         private const double MaximumCallRaise = 0.5;
 
-        public int calculate(GameState gameState, int evaluation)
+        public int calculate(GameState gameState, int evaluation, IBetLevel betLevel)
         {
-            if (evaluation == 0)
+            if (evaluation <= betLevel.FoldLevel)
                 return 0;
 
-            if (evaluation <= 6)
+            if (evaluation <= betLevel.CallLevel)
                 return calculateCallBet(gameState);
 
-            if (evaluation <= 8)
+            if (evaluation <= betLevel.RaiseLevel)
                 return calculateRaise(gameState);
 
             return gameState.Self.Stack;

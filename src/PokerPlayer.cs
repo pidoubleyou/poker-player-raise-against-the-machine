@@ -17,8 +17,10 @@ namespace Nancy.Simple
 
             var eval = new Evaluator();
             var calculator = new BetCalculator();
+            var betLevelProvider = new BetLevelProvider();
+
             var state = eval.GetScore(gameState.Self.Cards);
-            return calculator.calculate(gameState, state);
+            return calculator.calculate(gameState, state, betLevelProvider.GetBetLevel(gameState));
 		}
 
 		public static void ShowDown(JObject gameState)
