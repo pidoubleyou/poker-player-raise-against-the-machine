@@ -27,13 +27,25 @@ namespace PokerTest
         {
             // Arrange
             string two = "2";
-            CardValue cardValue = CardValue.A;
 
             // Act
-            cardValue = CardValueExtensions.Parse(two);
+            var cardValue = CardValueExtensions.Parse(two);
 
             // Assert
             Assert.AreEqual(CardValue.two, cardValue);
+        }
+
+        [TestMethod]
+        public void WhenK_EnumtwoExpected()
+        {
+            // Arrange
+            string k = "K";
+
+            // Act
+            var cardValue = CardValueExtensions.Parse(k);
+
+            // Assert
+            Assert.AreEqual(CardValue.K, cardValue);
         }
     }
 }
