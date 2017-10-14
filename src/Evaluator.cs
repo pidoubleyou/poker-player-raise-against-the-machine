@@ -13,7 +13,7 @@ namespace Nancy.Simple
             {
                 return GetScoreHandCards(cards);
             }
-            return GetScoreHandCards(cards);
+            return GetScoreAllCards(cards);
         }
 
         private static int GetScoreHandCards(List<Card> cards)
@@ -51,5 +51,11 @@ namespace Nancy.Simple
         {
             return cards[0].Value + cards[1].Value;
         }
+
+        private int GetScoreAllCards(List<Card> cards)
+        {
+            return GetScoreHandCards(cards);
+        }
+
     }
 }
