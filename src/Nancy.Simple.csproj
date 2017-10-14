@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="BetCalculator.cs" />
     <Compile Include="CardEnums.cs" />
+    <Compile Include="CardEnumsExtensions.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Deserializer.cs" />
     <Compile Include="Evaluator.cs" />

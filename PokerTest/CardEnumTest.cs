@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nancy.Simple;
+using Newtonsoft.Json.Linq;
 
 namespace PokerTest
 {
@@ -21,6 +22,7 @@ namespace PokerTest
             Assert.AreEqual(CardEnums.Clubs, cardColor);
         }
 
+        [TestMethod]
         public void When2_EnumtwoExpected()
         {
             // Arrange
@@ -28,7 +30,7 @@ namespace PokerTest
             CardValue cardValue = CardValue.A;
 
             // Act
-
+            cardValue = CardValueExtensions.Parse(two);
 
             // Assert
             Assert.AreEqual(CardValue.two, cardValue);
