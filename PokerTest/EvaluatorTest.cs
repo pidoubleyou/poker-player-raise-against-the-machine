@@ -12,12 +12,12 @@ namespace PokerTest
     public class EvaluatorTest
     {
         [TestMethod]
-        public void GetScore_SameRank ()
+        public void GetScore_SameRank_Ass ()
         {
             var target = new Evaluator();
             var cards = new Card[2];
-            cards[0] = new Card { Rank = "As" };
-            cards[1] = new Card { Rank = "As" };
+            cards[0] = new Card { Rank = "A", Suit = "Clubs" };
+            cards[1] = new Card { Rank = "A", Suit = "Spades" };
 
             var score = target.GetScore(cards);
 
@@ -25,16 +25,66 @@ namespace PokerTest
         }
 
         [TestMethod]
-        public void GetScore_SameColor()
+        public void GetScore_SameRank_9()
         {
             var target = new Evaluator();
             var cards = new Card[2];
-            cards[0] = new Card { Rank = "As", Suit = "Pik" };
+            cards[0] = new Card { Rank = "9", Suit = "Clubs" };
+            cards[1] = new Card { Rank = "9", Suit = "Spades" };
+
+            var score = target.GetScore(cards);
+
+            Assert.AreEqual(State.Raise, score);
+        }
+
+        [TestMethod]
+        public void GetScore_SameRankKleineKarte()
+        {
+            var target = new Evaluator();
+            var cards = new Card[2];
+            cards[0] = new Card { Rank = "7" };
+            cards[1] = new Card { Rank = "7" };
+
+            var score = target.GetScore(cards);
+
+            Assert.AreEqual(State.Raise, score);
+        }
+
+        [TestMethod]
+        public void GetScore_SameColor_Fold()
+        {
+            var target = new Evaluator();
+            var cards = new Card[2];
+            cards[0] = new Card { Rank = "6", Suit = "Pik" };
             cards[1] = new Card { Rank = "2", Suit = "Pik" };
 
             var score = target.GetScore(cards);
 
-            Assert.AreEqual(State.Call, score);
+            Assert.AreEqual(State.Fold, score);
+        }
+        [TestMethod]
+        public void GetScore_SameColor_AllIn()
+        {
+            var target = new Evaluator();
+            var cards = new Card[2];
+            cards[0] = new Card { Rank = "A", Suit = "Pik" };
+            cards[1] = new Card { Rank = "K", Suit = "Pik" };
+
+            var score = target.GetScore(cards);
+
+            Assert.AreEqual(State.AllIn, score);
+        }
+        [TestMethod]
+        public void GetScore_SameColor_Raise()
+        {
+            var target = new Evaluator();
+            var cards = new Card[2];
+            cards[0] = new Card { Rank = "A", Suit = "Pik" };
+            cards[1] = new Card { Rank = "2", Suit = "Pik" };
+
+            var score = target.GetScore(cards);
+
+            Assert.AreEqual(State.Raise, score);
         }
     }
 }

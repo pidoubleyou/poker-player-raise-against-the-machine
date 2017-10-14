@@ -17,7 +17,18 @@ namespace Nancy.Simple
     {
         public string Rank { get; set; }
         public string Suit { get; set; }
+
+        public int Value
+        {
+            get
+            {
+                CardValue value;
+                Enum.TryParse<CardValue>(Rank, out value);
+                return (int)value;
+            }
+        }
     }
+
     public class PlayerInfo
     {
         public int Bet { get; set; }
