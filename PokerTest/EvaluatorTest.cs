@@ -266,5 +266,56 @@ namespace PokerTest
 
             Assert.IsFalse(score);
         }
+        [TestMethod]
+        public void ContainsFullHouse_FullHouse_True()
+        {
+            var target = new Evaluator();
+            var cards = new List<Card>
+            {
+                new Card { Rank = "7", Suit = "Pik" },
+                new Card { Rank = "10", Suit = "Pik" },
+                new Card { Rank = "7", Suit = "Pik" },
+                new Card { Rank = "7", Suit = "Pik" },
+                new Card { Rank = "10", Suit = "Pik" }
+            };
+
+            var score = target.ContainsFullHouse(cards);
+
+            Assert.IsTrue(score);
+        }
+        [TestMethod]
+        public void ContainsStreet_NoDrilling_False()
+        {
+            var target = new Evaluator();
+            var cards = new List<Card>
+            {
+                new Card { Rank = "A", Suit = "Pik" },
+                new Card { Rank = "7", Suit = "XY" },
+                new Card { Rank = "A", Suit = "Pik" },
+                new Card { Rank = "7", Suit = "Pik" },
+                new Card { Rank = "K", Suit = "Pik" }
+            };
+
+            var score = target.ContainsFullHouse(cards);
+
+            Assert.IsFalse(score);
+        }
+        [TestMethod]
+        public void ContainsFullHouse_NoPair_False()
+        {
+            var target = new Evaluator();
+            var cards = new List<Card>
+            {
+                new Card { Rank = "A", Suit = "Pik" },
+                new Card { Rank = "7", Suit = "XY" },
+                new Card { Rank = "7", Suit = "Pik" },
+                new Card { Rank = "7", Suit = "Pik" },
+                new Card { Rank = "K", Suit = "Pik" }
+            };
+
+            var score = target.ContainsFullHouse(cards);
+
+            Assert.IsFalse(score);
+        }
     }
 }

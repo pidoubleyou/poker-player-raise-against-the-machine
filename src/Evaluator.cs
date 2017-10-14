@@ -62,6 +62,10 @@ namespace Nancy.Simple
             {
                 return 10;
             }
+            if (ContainsFullHouse(cards))
+            {
+                return 10;
+            }
             if (ContainsStreet(cards))
             {
                 return 9;
@@ -110,6 +114,18 @@ namespace Nancy.Simple
         {
             var groupList = cards.GroupBy(c => c.Value);
             return groupList.Any(g => g.Count() == countKind);
+        }
+        public bool ContainsFullHouse(List<Card> cards)
+        {
+            var groupList = cards.GroupBy(c => c.Value);
+            var drilling = groupList.Where(g => g.Count() == 3).FirstOrDefault();
+            if (drilling == null)
+                return false;
+
+            var drillingValue = drilling.First().Value;
+            var pair = groupList.Where(g => g.Count() >= 2 && g.First().Value != drillingValue).FirstOrDefault();
+
+            return pair != null;
         }
         public bool ContainsTwoPair(List<Card> cards)
         {
