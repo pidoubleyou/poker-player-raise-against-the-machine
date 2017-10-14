@@ -9,6 +9,15 @@ namespace Nancy.Simple
     {
         public State GetScore (Card[] cards)
         {
+            if (cards.Count() == 2)
+            {
+                return GetScoreHandCards(cards);
+            }
+            return State.Fold;
+        }
+
+        private static State GetScoreHandCards(Card[] cards)
+        {
             // Pärchen behandeln
             if (IsPair(cards) && GetSumCards(cards) > 20)
                 return State.AllIn;
