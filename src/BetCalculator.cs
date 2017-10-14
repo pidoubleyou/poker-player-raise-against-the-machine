@@ -7,6 +7,9 @@ namespace Nancy.Simple
 {
     public class BetCalculator
     {
+        private const double MaximumCallBet = 0.2;
+        private const double MaximumCallRaise = 0.5;
+
         public int calculate(GameState gameState, int evaluation)
         {
             if (evaluation == 0)
@@ -25,11 +28,6 @@ namespace Nancy.Simple
         
             var raise = gameState.MinimumRaise;
 
-            // Minimum Raise 101 um den blauen Bot herauszukicken ;)
-            if(raise <= 100)
-            {
-                raise = 101;
-            }
             if(raise > gameState.Self.Stack)
             {
                 raise = gameState.Self.Stack;
@@ -40,7 +38,13 @@ namespace Nancy.Simple
 
         private int calculateCallBet(GameState gameState)
         {
-            return gameState.CurrentBuyIn - gameState.Self.Bet;
+            var bet = gameState.CurrentBuyIn - gameState.Self.Bet;
+            if(bet > gameState.Self.Stack * MaximumCallBet)
+            {
+                bet = 0;
+            }
+
+            return bet;
         }
     }
 }

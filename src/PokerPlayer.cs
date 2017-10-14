@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace Nancy.Simple
 {
@@ -10,6 +11,8 @@ namespace Nancy.Simple
 
 		public static int BetRequest(JObject gameStateJson)
 		{
+            Console.Write(gameStateJson.ToString());
+
             var deserializer = new Deserializer();
             var gameState = deserializer.Deserialize(gameStateJson);
 

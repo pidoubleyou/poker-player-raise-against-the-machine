@@ -35,7 +35,7 @@ namespace PokerTest
                 CurrentBuyIn = 10,
                 Players = new PlayerInfo[]
                 {
-                    new PlayerInfo() { Name = Constants.PlayerName, Bet = 0 }
+                    new PlayerInfo() { Name = Constants.PlayerName, Bet = 0, Stack = 1000 }
                 }
             };
 
@@ -69,7 +69,7 @@ namespace PokerTest
                 CurrentBuyIn = 30,
                 Players = new PlayerInfo[]
                 {
-                    new PlayerInfo() { Name = Constants.PlayerName, Bet = 10 }
+                    new PlayerInfo() { Name = Constants.PlayerName, Bet = 10, Stack = 1000 }
                 }
             };
 
@@ -79,6 +79,24 @@ namespace PokerTest
         }
 
         [TestMethod]
+        public void calculateTestDontCallIfBetIsTooHigh()
+        {
+            var gameState = new GameState()
+            {
+                CurrentBuyIn = 500,
+                Players = new PlayerInfo[]
+                {
+                    new PlayerInfo() { Name = Constants.PlayerName, Bet = 0, Stack = 1000 },
+                }
+            };
+
+            var actual = target.calculate(gameState, 6);
+
+            Assert.AreEqual(0, actual);
+        }
+
+
+        [TestMethod]
         public void calculateTestAllIn()
         {
             var gameState = new GameState()
@@ -86,7 +104,7 @@ namespace PokerTest
                 CurrentBuyIn = 30,
                 Players = new PlayerInfo[]
                 {
-                    new PlayerInfo() { Name = Constants.PlayerName, Stack = 877, Bet = 10 }
+                    new PlayerInfo() { Name = Constants.PlayerName, Stack = 877, Bet = 10 },
                 }
             };
 
@@ -111,26 +129,6 @@ namespace PokerTest
             var actual = target.calculate(gameState, 8);
 
             Assert.AreEqual(155, actual);
-
-        }
-
-
-        [TestMethod]
-        public void calculateTestRaiseAtLeast101()
-        {
-            var gameState = new GameState()
-            {
-                CurrentBuyIn = 30,
-                MinimumRaise = 55,
-                Players = new PlayerInfo[]
-                {
-                    new PlayerInfo() { Name = Constants.PlayerName, Stack = 877, Bet = 0 }
-                }
-            };
-
-            var actual = target.calculate(gameState, 8);
-
-            Assert.AreEqual(101, actual);
 
         }
 
