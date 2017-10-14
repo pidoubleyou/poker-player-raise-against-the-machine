@@ -17,9 +17,22 @@ namespace Nancy.Simple
                     return calculateCallBet(gameState);
                 case State.AllIn:
                     return gameState.Self.Stack;
+                case State.Raise:
+                    return calculateRaise(gameState);
                 default:
-                    return 1000;
+                    return 0;
             }
+        }
+
+        private int calculateRaise(GameState gameState) { 
+        
+            var raise = gameState.MinimumRaise;
+            if(raise > gameState.Self.Stack)
+            {
+                raise = gameState.Self.Stack;
+            }
+
+            return raise;
         }
 
         private int calculateCallBet(GameState gameState)

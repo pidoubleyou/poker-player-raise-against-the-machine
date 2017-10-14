@@ -33,6 +33,8 @@ namespace Nancy.Simple
         public int SmallBlind { get; set; }
         [JsonProperty("current_buy_in")]
         public int CurrentBuyIn { get; set; }
+        [JsonProperty("minimum_raise")]
+        public int MinimumRaise { get; set; }
         public int Pot { get; set; }
         public PlayerInfo[] Players { get; set; }
 

@@ -94,5 +94,43 @@ namespace PokerTest
 
             Assert.AreEqual(877, actual);
         }
+
+        [TestMethod]
+        public void calculateTestRaiseMinimum()
+        {
+            var gameState = new GameState()
+            {
+                CurrentBuyIn = 30,
+                MinimumRaise = 55,
+                Players = new PlayerInfo[]
+                {
+                    new PlayerInfo() { Name = Constants.PlayerName, Stack = 877, Bet = 10 }
+                }
+            };
+
+            var actual = target.calculate(gameState, State.Raise);
+
+            Assert.AreEqual(55, actual);
+
+        }
+
+        [TestMethod]
+        public void calculateTestRaiseMinimumLargerStack()
+        {
+            var gameState = new GameState()
+            {
+                CurrentBuyIn = 30,
+                MinimumRaise = 655,
+                Players = new PlayerInfo[]
+                {
+                    new PlayerInfo() { Name = Constants.PlayerName, Stack = 223, Bet = 10 }
+                }
+            };
+
+            var actual = target.calculate(gameState, State.Raise);
+
+            Assert.AreEqual(223, actual);
+
+        }
     }
 }

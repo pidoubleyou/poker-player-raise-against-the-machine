@@ -30,6 +30,7 @@ namespace PokerTest
                 SmallBlind = 100,
                 CurrentBuyIn = 5,
                 Pot = 20,
+                MinimumRaise = 44,
                 Players = new PlayerInfo[]
                 {
                     new PlayerInfo { Name = "Player 1", Bet= 0, Stack = 1000, Cards = new Card[] { new Card { Rank = "7", Suit = "spades" }, new Card { Rank = "7", Suit = "hearts" } } },
