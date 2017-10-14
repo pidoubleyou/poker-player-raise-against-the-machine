@@ -110,7 +110,7 @@ namespace PokerTest
                 new Card { Rank = "A", Suit = "Pik" }
             };
 
-            var score = target.ContainsPair(cards);
+            var score = target.ContainsMulitpleCards(cards, 2);
 
             Assert.IsTrue(score);
         }
@@ -126,7 +126,7 @@ namespace PokerTest
                 new Card { Rank = "K", Suit = "Pik" }
             };
 
-            var score = target.ContainsPair(cards);
+            var score = target.ContainsMulitpleCards(cards, 2);
 
             Assert.IsFalse(score);
         }
@@ -143,7 +143,7 @@ namespace PokerTest
                 new Card { Rank = "A", Suit = "Pik" }
             };
 
-            var score = target.ContainsTriple(cards);
+            var score = target.ContainsMulitpleCards(cards, 3);
 
             Assert.IsTrue(score);
         }
@@ -160,7 +160,7 @@ namespace PokerTest
                 new Card { Rank = "K", Suit = "Pik" }
             };
 
-            var score = target.ContainsTriple(cards);
+            var score = target.ContainsMulitpleCards(cards, 3);
 
             Assert.IsFalse(score);
         }
