@@ -50,5 +50,25 @@ namespace PokerTest
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual is HeadsUpBetLevel);
         }
+
+        [TestMethod]
+        public void GetBetLevelTestHighRaiseOtherPlayer()
+        {
+            var gameState = new GameState
+            {
+                Players = new PlayerInfo[]
+                {
+                    new PlayerInfo { Name = Constants.PlayerName, Status = "active", Bet = 0, Stack = 1000 },
+                    new PlayerInfo { Name = "X", Status = "active", Bet = 200, Stack = 300 },
+                    new PlayerInfo { Name = "Y", Status = "active", Bet = 0, Stack = 300 },
+                }
+            };
+
+            var target = new BetLevelProvider();
+            var actual = target.GetBetLevel(gameState);
+
+            Assert.IsNotNull(actual);
+            Assert.IsTrue(actual is HighRaiseBetLevel);
+        }
     }
 }

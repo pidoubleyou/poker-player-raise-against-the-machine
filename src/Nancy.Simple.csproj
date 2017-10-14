@@ -91,6 +91,7 @@
     <Compile Include="Evaluator.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="HeadsUpBetLevel.cs" />
+    <Compile Include="HighRaiseBetLevel.cs" />
     <Compile Include="IBetLevel.cs" />
     <Compile Include="MainModule.cs" />
     <Compile Include="App.cs" />

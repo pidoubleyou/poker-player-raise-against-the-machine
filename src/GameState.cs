@@ -30,12 +30,29 @@ namespace Nancy.Simple
 
     public class PlayerInfo
     {
+        private const double HighRaisePercentage = 0.5;
+
         public int Bet { get; set; }
         public string Name { get; set; }
         public int Stack { get; set; }
         public string Status { get; set; }
         [JsonProperty("hole_cards")]
         public Card[] Cards { get; set; }
+
+        public bool HasRaisedHigh()
+        {
+            if(Bet == 0)
+            {
+                return false;
+            }
+
+            if(Stack * HighRaisePercentage <= Bet)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 
     public class GameState
