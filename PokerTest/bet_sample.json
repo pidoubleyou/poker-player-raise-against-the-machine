@@ -5,7 +5,14 @@
       "stack":1000,
       "status":"active",
       "bet":0,
-      "hole_cards":[],
+      "hole_cards":[{
+                    "rank": "7",                    // Rank of the card. Possible values are numbers 2-10 and J,Q,K,A
+                    "suit": "spades"                // Suit of the card. Possible values are: clubs,spades,hearts,diamonds
+                },
+                {
+                    "rank": "7",
+                    "suit": "hearts"
+                }],
       "version":"Version name 1",
       "id":0
     },
@@ -14,7 +21,14 @@
       "stack":1000,
       "status":"active",
       "bet":0,
-      "hole_cards":[],
+      "hole_cards":[{
+                    "rank": "6",                    // Rank of the card. Possible values are numbers 2-10 and J,Q,K,A
+                    "suit": "hearts"                // Suit of the card. Possible values are: clubs,spades,hearts,diamonds
+                },
+                {
+                    "rank": "K",
+                    "suit": "spades"
+                }],
       "version":"Version name 2",
       "id":1
     }

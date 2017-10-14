@@ -29,7 +29,12 @@ namespace PokerTest
             {
                 SmallBlind = 100,
                 CurrentBuyIn = 5,
-                Pot = 20
+                Pot = 20,
+                Players = new PlayerInfo[]
+                {
+                    new PlayerInfo { Name = "Player 1", Stack = 1000, Cards = new Card[] { new Card { Rank = "7", Suit = "spades" }, new Card { Rank = "7", Suit = "hearts" } } },
+                    new PlayerInfo { Name = "Player 2", Stack = 1000,Cards = new Card[] { new Card { Rank = "6", Suit = "hearts" }, new Card { Rank = "K", Suit = "spades" } } }
+                }
             };
 
             var json = File.ReadAllText(@"testfiles\bet_sample.json");
@@ -42,6 +47,19 @@ namespace PokerTest
             Assert.AreEqual(expectedGameState.Pot, actual.Pot);
             Assert.AreEqual(expectedGameState.SmallBlind, actual.SmallBlind);
             Assert.AreEqual(expectedGameState.CurrentBuyIn, actual.CurrentBuyIn);
+
+            Assert.AreEqual(expectedGameState.Players.Count(), actual.Players.Count());
+            for(int i = 0; i < expectedGameState.Players.Count(); i++)
+            {
+                Assert.AreEqual(expectedGameState.Players[i].Name, actual.Players[i].Name);
+                Assert.AreEqual(expectedGameState.Players[i].Stack, actual.Players[i].Stack);
+
+                for(int j = 0; j < expectedGameState.Players[i].Cards.Count(); j++)
+                {
+                    Assert.AreEqual(expectedGameState.Players[i].Cards[j].Rank, actual.Players[i].Cards[j].Rank);
+                    Assert.AreEqual(expectedGameState.Players[i].Cards[j].Suit, actual.Players[i].Cards[j].Suit);
+                }
+            }
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Nancy.Simple
     {
         public string Name { get; set; }
         public int Stack { get; set; }
+        [JsonProperty("hole_cards")]
         public Card[] Cards { get; set; }
     }
 
@@ -25,8 +26,6 @@ namespace Nancy.Simple
         [JsonProperty("current_buy_in")]
         public int CurrentBuyIn { get; set; }
         public int Pot { get; set; }
-        public PlayerInfo Player { get; set; }
-
-
+        public PlayerInfo[] Players { get; set; }
     }
 }
