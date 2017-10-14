@@ -101,16 +101,36 @@ namespace PokerTest
             var gameState = new GameState()
             {
                 CurrentBuyIn = 30,
-                MinimumRaise = 55,
-                Players = new PlayerInfo[]
+                MinimumRaise = 155,
+                Players = new PlayerInfo[] 
                 {
                     new PlayerInfo() { Name = Constants.PlayerName, Stack = 877, Bet = 10 }
                 }
             };
 
+            var actual = target.calculate(gameState, State.Raise);
+
+            Assert.AreEqual(155, actual);
+
+        }
+
+
+        [TestMethod]
+        public void calculateTestRaiseAtLeast101()
+        {
+            var gameState = new GameState()
+            {
+                CurrentBuyIn = 30,
+                MinimumRaise = 55,
+                Players = new PlayerInfo[]
+                {
+                    new PlayerInfo() { Name = Constants.PlayerName, Stack = 877, Bet = 0 }
+                }
+            };
+
             var actual = target.calculate(gameState, 8);
 
-            Assert.AreEqual(55, actual);
+            Assert.AreEqual(101, actual);
 
         }
 
