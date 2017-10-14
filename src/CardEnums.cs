@@ -1,6 +1,6 @@
 ﻿namespace Nancy.Simple
 {
-    public enum CardColors
+    public enum CardEnums
     {
         Clubs,
         Spades,
