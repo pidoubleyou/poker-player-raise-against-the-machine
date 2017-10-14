@@ -55,7 +55,17 @@ namespace Nancy.Simple
         private int GetScoreAllCards(List<Card> cards)
         {
             var communityCards = cards.Skip(2).ToList();
-            if (ContainsMulitpleCards(cards, 4))
+            var scoreWithHandCards = GetScoreCards(cards);
+            var scoreCommunityCards = GetScoreCards(communityCards);
+
+            if (scoreCommunityCards == scoreWithHandCards)
+                return 0;
+
+            return scoreWithHandCards;
+        }
+        private int GetScoreCards(List<Card> cards)
+        {
+            if (ContainsFourOfAKind(cards))
             {
                 return 10;
             }
@@ -71,7 +81,7 @@ namespace Nancy.Simple
             {
                 return 9;
             }
-            if (ContainsMulitpleCards(cards, 3))
+            if (ContainsTriple(cards))
             {
                 return 9;
             }
@@ -79,12 +89,26 @@ namespace Nancy.Simple
             {
                 return 8;
             }
-            if (ContainsMulitpleCards(cards, 2))
+            if (ContainsOnePair(cards))
             {
-                if (!ContainsMulitpleCards(communityCards, 2)) 
-                    return 7;
-            }
+                return 7;
+        }
             return 0;
+        }
+
+        private bool ContainsOnePair(List<Card> cards)
+        {
+            return ContainsMulitpleCards(cards, 2);
+        }
+
+        private bool ContainsTriple(List<Card> cards)
+        {
+            return ContainsMulitpleCards(cards, 3);
+        }
+
+        private bool ContainsFourOfAKind(List<Card> cards)
+        {
+            return ContainsMulitpleCards(cards, 4);
         }
 
         public bool ContainsStreet(List<Card> cards)
