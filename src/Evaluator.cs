@@ -19,20 +19,20 @@ namespace Nancy.Simple
         private static int GetScoreHandCards(List<Card> cards)
         {
             // Pärchen behandeln
-            if (IsPair(cards) && GetSumCards(cards) > 20)
+            if (IsPair(cards) && GetSumOfHandCards(cards) > 20)
                 return 10;
             if (IsPair(cards)) {
                 return 8;
             }
 
             // Höhe der Karte
-            if (IsSameColor(cards) && GetSumCards(cards) > 25)
+            if (IsSameColor(cards) && GetSumOfHandCards(cards) > 25)
                 return 8;
-            if (IsSameColor(cards) && GetSumCards(cards) > 12)
+            if (IsSameColor(cards) && GetSumOfHandCards(cards) > 12)
                 return 6;
-            if (GetSumCards(cards) > 25)
+            if (GetSumOfHandCards(cards) > 25)
                 return 7;
-            if (GetSumCards(cards) > 21)
+            if (GetSumOfHandCards(cards) > 21)
                 return 5;
 
             return 0;
@@ -48,7 +48,7 @@ namespace Nancy.Simple
             return cards[0].Suit == cards[1].Suit;
         }
 
-        public static int GetSumCards(List<Card> cards)
+        public static int GetSumOfHandCards(List<Card> cards)
         {
             return cards[0].Value + cards[1].Value;
         }
@@ -56,15 +56,15 @@ namespace Nancy.Simple
         private int GetScoreAllCards(List<Card> cards)
         {
             var communityCards = cards.Skip(2).ToList();
-            var scoreWithHandCards = GetScoreCards(cards);
-            var scoreCommunityCards = GetScoreCards(communityCards);
+            var scoreWithHandCards = GetScoreCards(cards, cards.Count);
+            var scoreCommunityCards = GetScoreCards(communityCards, cards.Count);
 
             if (scoreCommunityCards == scoreWithHandCards)
                 return 0;
 
             return scoreWithHandCards;
         }
-        private int GetScoreCards(List<Card> cards)
+        private int GetScoreCards(List<Card> cards, int countCards)
         {
             if (ContainsFourOfAKind(cards))
             {
@@ -92,16 +92,13 @@ namespace Nancy.Simple
             }
             if (ContainsOnePair(cards))
             {
-                if(ContainsMulitpleCards(communityCards, 2))
-                {
-                    return 0;
-                }
-
-                if(GetSumCards(cards) > 20)
+                var pair = GetMulitpleCards(cards, 2);
+                
+                if (pair.First().Value > 10)
                 {
                     return 7;
                 }
-                if(IsFlop(cards))
+                if(countCards == 5)
                 {
                    return 5;
                 }
@@ -152,9 +149,15 @@ namespace Nancy.Simple
 
         public bool ContainsMulitpleCards(List<Card> cards, int countKind)
         {
-            var groupList = cards.GroupBy(c => c.Value);
-            return groupList.Any(g => g.Count() == countKind);
+            return GetMulitpleCards(cards, countKind) != null;
         }
+
+        private static List<Card> GetMulitpleCards(List<Card> cards, int countKind)
+        {
+            var groupList = cards.GroupBy(c => c.Value);
+            return groupList.FirstOrDefault(g => g.Count() == countKind)?.ToList();
+        }
+
         public bool ContainsFullHouse(List<Card> cards)
         {
             var groupList = cards.GroupBy(c => c.Value);
