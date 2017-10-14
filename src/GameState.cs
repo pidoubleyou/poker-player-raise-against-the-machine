@@ -22,8 +22,7 @@ namespace Nancy.Simple
         {
             get
             {
-                CardValue value;
-                Enum.TryParse<CardValue>(Rank, out value);
+                CardValue value = CardValueExtensions.Parse(Rank);
                 return (int)value;
             }
         }
