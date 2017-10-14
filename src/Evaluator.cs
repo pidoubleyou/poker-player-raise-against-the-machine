@@ -7,16 +7,16 @@ namespace Nancy.Simple
 {
     public class Evaluator
     {
-        public int GetScore (Card[] cards)
+        public int GetScore (List<Card> cards)
         {
             if (cards.Count() == 2)
             {
                 return GetScoreHandCards(cards);
             }
-            return 0;
+            return GetScoreHandCards(cards);
         }
 
-        private static int GetScoreHandCards(Card[] cards)
+        private static int GetScoreHandCards(List<Card> cards)
         {
             // Pärchen behandeln
             if (IsPair(cards) && GetSumCards(cards) > 20)
@@ -37,17 +37,17 @@ namespace Nancy.Simple
             return 0;
         }
 
-        private static bool IsPair(Card[] cards)
+        private static bool IsPair(List<Card> cards)
         {
             return cards[0].Rank == cards[1].Rank;
         }
 
-        public static bool IsSameColor(Card[] cards)
+        public static bool IsSameColor(List<Card> cards)
         {
             return cards[0].Suit == cards[1].Suit;
         }
 
-        public static int GetSumCards(Card[] cards)
+        public static int GetSumCards(List<Card> cards)
         {
             return cards[0].Value + cards[1].Value;
         }

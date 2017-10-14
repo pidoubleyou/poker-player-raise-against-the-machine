@@ -108,7 +108,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, State.Raise);
+            var actual = target.calculate(gameState, 8);
 
             Assert.AreEqual(155, actual);
 

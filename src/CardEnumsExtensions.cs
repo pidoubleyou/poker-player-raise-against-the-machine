@@ -6,11 +6,6 @@ namespace Nancy.Simple
     {
         public static CardValue Parse(string value)
         {
-            const string j = "J";
-            const string q = "Q";
-            const string k = "K";
-            const string a = "A";
-
             CardValue cardValueOut;
             int cardNumber;
 
