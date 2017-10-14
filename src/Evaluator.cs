@@ -26,11 +26,11 @@ namespace Nancy.Simple
 
             // Höhe der Karte
             if (IsSameColor(cards) && GetSumCards(cards) > 25)
-                return 10;
+                return 8;
             if (IsSameColor(cards) && GetSumCards(cards) > 12)
-                return 8;
+                return 7;
             if (GetSumCards(cards) > 25)
-                return 8;
+                return 7;
             if (GetSumCards(cards) > 21)
                 return 6;
 
