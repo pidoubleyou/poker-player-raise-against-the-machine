@@ -22,7 +22,7 @@ namespace PokerTest
         [TestMethod]
         public void calculateTestReturnsNullIfFold()
         {
-            var actual = target.calculate(new GameState(), State.Fold);
+            var actual = target.calculate(new GameState(), 0);
 
             Assert.AreEqual(0, actual);
         }
@@ -39,7 +39,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, State.Call);
+            var actual = target.calculate(gameState, 6);
 
             Assert.AreEqual(10, actual);
         }
@@ -56,7 +56,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, State.Call);
+            var actual = target.calculate(gameState, 6);
 
             Assert.AreEqual(0, actual);
         }
@@ -73,7 +73,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, State.Call);
+            var actual = target.calculate(gameState, 6);
 
             Assert.AreEqual(20, actual);
         }
@@ -90,7 +90,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, State.AllIn);
+            var actual = target.calculate(gameState, 10);
 
             Assert.AreEqual(877, actual);
         }
@@ -108,7 +108,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, State.Raise);
+            var actual = target.calculate(gameState, 8);
 
             Assert.AreEqual(55, actual);
 
@@ -127,7 +127,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, State.Raise);
+            var actual = target.calculate(gameState, 8);
 
             Assert.AreEqual(223, actual);
 

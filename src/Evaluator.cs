@@ -7,34 +7,34 @@ namespace Nancy.Simple
 {
     public class Evaluator
     {
-        public State GetScore (Card[] cards)
+        public int GetScore (Card[] cards)
         {
             if (cards.Count() == 2)
             {
                 return GetScoreHandCards(cards);
             }
-            return State.Fold;
+            return 0;
         }
 
-        private static State GetScoreHandCards(Card[] cards)
+        private static int GetScoreHandCards(Card[] cards)
         {
             // Pärchen behandeln
             if (IsPair(cards) && GetSumCards(cards) > 20)
-                return State.AllIn;
+                return 10;
             if (IsPair(cards))
-                return State.Raise;
+                return 8;
 
             // Höhe der Karte
             if (IsSameColor(cards) && GetSumCards(cards) > 25)
-                return State.AllIn;
+                return 10;
             if (IsSameColor(cards) && GetSumCards(cards) > 12)
-                return State.Raise;
+                return 8;
             if (GetSumCards(cards) > 25)
-                return State.Raise;
+                return 8;
             if (GetSumCards(cards) > 21)
-                return State.Call;
+                return 6;
 
-            return State.Fold;
+            return 0;
         }
 
         private static bool IsPair(Card[] cards)

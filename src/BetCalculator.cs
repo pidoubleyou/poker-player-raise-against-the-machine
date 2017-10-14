@@ -7,21 +7,18 @@ namespace Nancy.Simple
 {
     public class BetCalculator
     {
-        public int calculate(GameState gameState, State state)
+        public int calculate(GameState gameState, int evaluation)
         {
-            switch(state)
-            {
-                case State.Fold:
-                    return 0;
-                case State.Call:
-                    return calculateCallBet(gameState);
-                case State.AllIn:
-                    return gameState.Self.Stack;
-                case State.Raise:
-                    return calculateRaise(gameState);
-                default:
-                    return 0;
-            }
+            if (evaluation == 0)
+                return 0;
+
+            if (evaluation <= 6)
+                return calculateCallBet(gameState);
+
+            if (evaluation <= 8)
+                return calculateRaise(gameState);
+
+            return gameState.Self.Stack;
         }
 
         private int calculateRaise(GameState gameState) { 
