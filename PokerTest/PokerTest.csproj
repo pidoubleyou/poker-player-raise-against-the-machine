@@ -59,7 +59,10 @@
     <Compile Include="CardEnumTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bet_sample.json">
+    <None Include="bet_sample_with_community_cards.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="bet_sample_no_community_cards.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

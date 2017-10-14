@@ -36,6 +36,8 @@ namespace Nancy.Simple
         [JsonProperty("minimum_raise")]
         public int MinimumRaise { get; set; }
         public int Pot { get; set; }
+        [JsonProperty("community_cards")]
+        public Card[] CommunityCards { get; set; }
         public PlayerInfo[] Players { get; set; }
 
         public PlayerInfo Self { get
