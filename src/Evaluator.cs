@@ -28,11 +28,11 @@ namespace Nancy.Simple
             if (IsSameColor(cards) && GetSumCards(cards) > 25)
                 return 8;
             if (IsSameColor(cards) && GetSumCards(cards) > 12)
-                return 7;
+                return 6;
             if (GetSumCards(cards) > 25)
                 return 7;
             if (GetSumCards(cards) > 21)
-                return 6;
+                return 5;
 
             return 0;
         }
@@ -54,6 +54,7 @@ namespace Nancy.Simple
 
         private int GetScoreAllCards(List<Card> cards)
         {
+            var communityCards = new List<Card>();
             if (ContainsMulitpleCards(cards, 4))
             {
                 return 10;
@@ -80,6 +81,8 @@ namespace Nancy.Simple
             }
             if (ContainsMulitpleCards(cards, 2))
             {
+                //var 
+                //if (ContainsMulitpleCards(cards.s))
                 return 7;
             }
             return 0;

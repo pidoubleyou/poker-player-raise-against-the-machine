@@ -95,7 +95,7 @@ namespace PokerTest
 
             var score = target.GetScore(cards);
 
-            Assert.AreEqual(7, score);
+            Assert.AreEqual(6, score);
         }
 
         [TestMethod]
