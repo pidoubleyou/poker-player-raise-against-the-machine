@@ -59,7 +59,7 @@ namespace PokerTest
                 Players = new PlayerInfo[]
                 {
                     new PlayerInfo { Name = Constants.PlayerName, Status = "active", Bet = 0, Stack = 1000 },
-                    new PlayerInfo { Name = "X", Status = "active", Bet = 200, Stack = 300 },
+                    new PlayerInfo { Name = "X", Status = "active", Bet = 200, Stack = 200 },
                     new PlayerInfo { Name = "Y", Status = "active", Bet = 0, Stack = 300 },
                 }
             };

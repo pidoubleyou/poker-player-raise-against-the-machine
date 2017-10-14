@@ -24,7 +24,7 @@ namespace PokerTest
         [TestMethod]
         public void HasRaisedHighTestFalseIfLessFiftyPercentOfStack()
         {
-            var player = new PlayerInfo { Bet = 100, Stack = 400 };
+            var player = new PlayerInfo { Bet = 399, Stack = 400 };
 
             var actual = player.HasRaisedHigh();
 
@@ -32,9 +32,9 @@ namespace PokerTest
         }
 
         [TestMethod]
-        public void HasRaisedHighTestTrueIfFiftyPercentOfStack()
+        public void HasRaisedHighTestTrueIfFiftyPercentOfInitialStack()
         {
-            var player = new PlayerInfo { Bet = 200, Stack = 400 };
+            var player = new PlayerInfo { Bet = 400, Stack = 400 };
 
             var actual = player.HasRaisedHigh();
 
