@@ -15,6 +15,8 @@ namespace Nancy.Simple
                     return 0;
                 case State.Call:
                     return calculateCallBet(gameState);
+                case State.AllIn:
+                    return gameState.Self.Stack;
                 default:
                     return 1000;
             }

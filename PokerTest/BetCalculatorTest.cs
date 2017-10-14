@@ -78,5 +78,21 @@ namespace PokerTest
             Assert.AreEqual(20, actual);
         }
 
+        [TestMethod]
+        public void calculateTestAllIn()
+        {
+            var gameState = new GameState()
+            {
+                CurrentBuyIn = 30,
+                Players = new PlayerInfo[]
+                {
+                    new PlayerInfo() { Name = Constants.PlayerName, Stack = 877, Bet = 10 }
+                }
+            };
+
+            var actual = target.calculate(gameState, State.AllIn);
+
+            Assert.AreEqual(877, actual);
+        }
     }
 }
