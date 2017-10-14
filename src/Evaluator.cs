@@ -62,9 +62,13 @@ namespace Nancy.Simple
             {
                 return 9;
             }
-            if (ContainsMulitpleCards(cards, 2))
+            if (ContainsTwoPair(cards))
             {
                 return 8;
+            }
+            if (ContainsMulitpleCards(cards, 2))
+            {
+                return 7;
             }
             return 0;
         }
@@ -73,6 +77,11 @@ namespace Nancy.Simple
         {
             var groupList = cards.GroupBy(c => c.Value);
             return groupList.Any(g => g.Count() == countKind);
+        }
+        public bool ContainsTwoPair(List<Card> cards)
+        {
+            var groupList = cards.GroupBy(c => c.Value);
+            return groupList.Count(g => g.Count() == 2) == 2;
         }
     }
 }
