@@ -13,14 +13,9 @@ namespace Nancy.Simple
             var gameState = deserializer.Deserialize(gameStateJson);
 
             var eval = new Evaluator();
+            var calculator = new BetCalculator();
             var state = eval.GetScore(gameState.Self.Cards);
-            switch(state)
-            {
-                case State.Fold:
-                    return 0;
-                default:
-                    return 1000;
-            }
+            return calculator.calculate(state);
 		}
 
 		public static void ShowDown(JObject gameState)

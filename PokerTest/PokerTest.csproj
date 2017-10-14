@@ -51,6 +51,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BetCalculatorTest.cs" />
     <Compile Include="DeserializerTest.cs" />
     <Compile Include="EvaluatorTest.cs" />
     <Compile Include="GameStateTest.cs" />
