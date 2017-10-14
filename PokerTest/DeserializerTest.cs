@@ -34,8 +34,10 @@ namespace PokerTest
                 CommunityCards = new Card[0],
                 Players = new PlayerInfo[]
                 {
-                    new PlayerInfo { Name = "Player 1", Bet= 0, Stack = 1000, Cards = new Card[] { new Card { Rank = "7", Suit = "spades" }, new Card { Rank = "7", Suit = "hearts" } } },
-                    new PlayerInfo { Name = "Player 2", Bet = 20, Stack = 1000,Cards = new Card[] { new Card { Rank = "6", Suit = "hearts" }, new Card { Rank = "K", Suit = "spades" } } }
+                    new PlayerInfo { Name = "Player 1", Bet= 0, Stack = 1000, Status = "active", Cards = new Card[] { new Card { Rank = "7", Suit = "spades" }, new Card { Rank = "7", Suit = "hearts" } } },
+                    new PlayerInfo { Name = "Player 2", Bet = 20, Stack = 1000, Status = "active", Cards = new Card[] { new Card { Rank = "6", Suit = "hearts" }, new Card { Rank = "K", Suit = "spades" } } },
+                    new PlayerInfo { Name = "Player 3", Bet = 0, Stack = 0, Status = "out", Cards = new Card[0] },
+                    new PlayerInfo { Name = "Player 4", Bet = 0, Stack = 1000, Status = "folded", Cards = new Card[0] }
                 }
             };
 
@@ -65,8 +67,8 @@ namespace PokerTest
                 },
                 Players = new PlayerInfo[]
                 {
-                    new PlayerInfo { Name = "Player 1", Bet= 0, Stack = 1000, Cards = new Card[] { new Card { Rank = "7", Suit = "spades" }, new Card { Rank = "7", Suit = "hearts" } } },
-                    new PlayerInfo { Name = "Player 2", Bet = 20, Stack = 1000,Cards = new Card[] { new Card { Rank = "6", Suit = "hearts" }, new Card { Rank = "K", Suit = "spades" } } }
+                    new PlayerInfo { Name = "Player 1", Bet= 0, Stack = 1000, Status = "active", Cards = new Card[] { new Card { Rank = "7", Suit = "spades" }, new Card { Rank = "7", Suit = "hearts" } } },
+                    new PlayerInfo { Name = "Player 2", Bet = 20, Stack = 1000, Status = "active", Cards = new Card[] { new Card { Rank = "6", Suit = "hearts" }, new Card { Rank = "K", Suit = "spades" } } }
                 }
             };
 
@@ -93,6 +95,7 @@ namespace PokerTest
                 Assert.AreEqual(expected.Players[i].Bet, actual.Players[i].Bet);
                 Assert.AreEqual(expected.Players[i].Name, actual.Players[i].Name);
                 Assert.AreEqual(expected.Players[i].Stack, actual.Players[i].Stack);
+                Assert.AreEqual(expected.Players[i].Status, actual.Players[i].Status);
 
                 for (int j = 0; j < expected.Players[i].Cards.Count(); j++)
                 {

@@ -33,6 +33,7 @@ namespace Nancy.Simple
         public int Bet { get; set; }
         public string Name { get; set; }
         public int Stack { get; set; }
+        public string Status { get; set; }
         [JsonProperty("hole_cards")]
         public Card[] Cards { get; set; }
     }
