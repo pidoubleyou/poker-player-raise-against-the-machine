@@ -12,7 +12,7 @@ namespace PokerTest
     public class EvaluatorTest
     {
         [TestMethod]
-        public void GetScore ()
+        public void GetScore_SameRank ()
         {
             var target = new Evaluator();
             var cards = new Card[2];
@@ -21,7 +21,20 @@ namespace PokerTest
 
             var score = target.GetScore(cards);
 
-            Assert.AreEqual(State.Raise, score);
+            Assert.AreEqual(State.AllIn, score);
+        }
+
+        [TestMethod]
+        public void GetScore_SameColor()
+        {
+            var target = new Evaluator();
+            var cards = new Card[2];
+            cards[0] = new Card { Rank = "As", Suit = "Pik" };
+            cards[1] = new Card { Rank = "2", Suit = "Pik" };
+
+            var score = target.GetScore(cards);
+
+            Assert.AreEqual(State.Call, score);
         }
     }
 }

@@ -7,10 +7,10 @@ namespace Nancy.Simple
 {
     public enum State
      {
-        AllIn,
+        Fold,
         Call,
         Raise,
-        Fold
+        AllIn
     }
     public class Card
     {
