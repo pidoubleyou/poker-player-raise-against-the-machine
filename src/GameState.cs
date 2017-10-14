@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,9 @@ namespace Nancy.Simple
 
     public class GameState
     {
+        [JsonProperty("small_blind")]
         public int SmallBlind { get; set; }
+        [JsonProperty("current_buy_in")]
         public int CurrentBuyIn { get; set; }
         public int Pot { get; set; }
         public PlayerInfo Player { get; set; }

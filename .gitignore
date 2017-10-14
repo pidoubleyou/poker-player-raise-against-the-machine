@@ -5,3 +5,4 @@ obj/
 /packages/Newtonsoft.Json.6.0.8
 /.vs/Nancy.Simple/v15
 /packages
+/TestResults
