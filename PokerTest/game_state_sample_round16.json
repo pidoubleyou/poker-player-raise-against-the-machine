@@ -1,0 +1,72 @@
+﻿{
+  "tournament_id": "595d0f86ee8b1f0004000003",
+  "game_id": "59e204f6bc7836000400017e",
+  "round": 16,
+  "players": [
+    {
+      "name": "Hupfl Dupf Inc",
+      "stack": 326,
+      "status": "folded",
+      "bet": 3,
+      "time_used": 577517,
+      "version": "Default TypeScript folding player",
+      "id": 0
+    },
+    {
+      "name": "Raise against the Machine",
+      "stack": 2066,
+      "status": "active",
+      "bet": 6,
+      "hole_cards": [
+        {
+          "rank": "K",
+          "suit": "hearts"
+        },
+        {
+          "rank": "K",
+          "suit": "spades"
+        }
+      ],
+      "time_used": 356324,
+      "version": "I can fold, go all in and raise",
+      "id": 1
+    },
+    {
+      "name": "TheBoozers",
+      "stack": 0,
+      "status": "out",
+      "bet": 0,
+      "time_used": 24134,
+      "version": "Default C# folding player",
+      "id": 2
+    },
+    {
+      "name": "John Doe",
+      "stack": 0,
+      "status": "out",
+      "bet": 0,
+      "time_used": 0,
+      "version": "Default Java folding player",
+      "id": 3
+    },
+    {
+      "name": "Justus Peter und Bob at pokerstarsdotcom",
+      "stack": 577,
+      "status": "active",
+      "bet": 22,
+      "time_used": 744538,
+      "version": "Default Java folding player",
+      "id": 4
+    }
+  ],
+  "small_blind": 3,
+  "big_blind": 6,
+  "orbits": 3,
+  "dealer": 4,
+  "community_cards": [],
+  "current_buy_in": 22,
+  "pot": 31,
+  "in_action": 1,
+  "minimum_raise": 16,
+  "bet_index": 6
+}
