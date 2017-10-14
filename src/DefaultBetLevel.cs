@@ -11,7 +11,7 @@ namespace Nancy.Simple
         {
             FoldLevel = 1;
             CallLevel = 6;
-            RaiseLevel = 8;
+            RaiseLevel = 10;
         }
     }
 }
