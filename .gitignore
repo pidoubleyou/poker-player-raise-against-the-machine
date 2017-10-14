@@ -6,3 +6,5 @@ obj/
 /.vs/Nancy.Simple/v15
 /packages
 /TestResults
+*.ide
+.vs/Nancy.Simple/v15/sqlite3/storage.ide

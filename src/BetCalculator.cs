@@ -27,6 +27,12 @@ namespace Nancy.Simple
         private int calculateRaise(GameState gameState) { 
         
             var raise = gameState.MinimumRaise;
+
+            // Minimum Raise 101 um den blauen Bot herauszukicken ;)
+            if(raise <= 100)
+            {
+                raise = 101;
+            }
             if(raise > gameState.Self.Stack)
             {
                 raise = gameState.Self.Stack;
