@@ -9,6 +9,9 @@ namespace Nancy.Simple
     {
         public State GetScore (Card[] cards)
         {
+            if (cards[0].Rank == cards[1].Rank)
+                return State.Raise;
+
             return State.Call;
         }
     }

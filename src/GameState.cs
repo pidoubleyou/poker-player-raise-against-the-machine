@@ -7,6 +7,7 @@ namespace Nancy.Simple
 {
     public enum State
      {
+        AllIn,
         Call,
         Raise,
         Fold

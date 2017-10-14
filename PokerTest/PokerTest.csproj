@@ -49,10 +49,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeserializerTest.cs" />
+    <Compile Include="EvaluatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\Nancy.Simple.csproj">
+      <Project>{0B3EA40E-F7D8-4E14-A30F-1536F41B62D1}</Project>
+      <Name>Nancy.Simple</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
