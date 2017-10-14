@@ -266,5 +266,69 @@ namespace PokerTest
 
             Assert.IsFalse(score);
         }
+
+
+        [TestMethod]
+        public void GetScore_HandWithPairOfJacks_ReturnsTen()
+        {
+            var target = new Evaluator();
+            var cards = new List<Card>
+            {
+                new Card { Rank = "J", Suit = "Pik" },
+                new Card { Rank = "J", Suit = "Hearts" }
+            };
+            var score = target.GetScore(cards);
+
+            Assert.AreEqual(10, score);
+        }
+
+        [TestMethod]
+        public void GetScore_HandWithPairOfTens_ReturnsEight()
+        {
+            var target = new Evaluator();
+            var cards = new List<Card>
+            {
+                new Card { Rank = "10", Suit = "Pik" },
+                new Card { Rank = "10", Suit = "Hearts" }
+            };
+            var score = target.GetScore(cards);
+
+            Assert.AreEqual(8, score);
+        }
+
+        [TestMethod]
+        public void GetScore_PairOfTens_AfterFlop_ReturnsFive()
+        {
+            var target = new Evaluator();
+            var cards = new List<Card>
+            {
+                new Card { Rank = "10", Suit = "Pik" },
+                new Card { Rank = "10", Suit = "Hearts" },
+                new Card { Rank = "5", Suit = "Spades" },
+                new Card { Rank = "J", Suit = "Spades" },
+                new Card { Rank = "K", Suit = "Hearts" }
+            };
+            var score = target.GetScore(cards);
+
+            Assert.AreEqual(5, score);
+        }
+
+        [TestMethod]
+        public void GetScore_PairOfTens_AfterRiver_ReturnsTwo()
+        {
+            var target = new Evaluator();
+            var cards = new List<Card>
+            {
+                new Card { Rank = "10", Suit = "Pik" },
+                new Card { Rank = "10", Suit = "Hearts" },
+                new Card { Rank = "5", Suit = "Spades" },
+                new Card { Rank = "J", Suit = "Spades" },
+                new Card { Rank = "K", Suit = "Hearts" },
+                new Card { Rank = "A", Suit = "Hearts" }
+            };
+            var score = target.GetScore(cards);
+
+            Assert.AreEqual(2, score);
+        }
     }
 }

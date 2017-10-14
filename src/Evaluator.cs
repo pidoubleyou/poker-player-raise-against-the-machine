@@ -9,7 +9,7 @@ namespace Nancy.Simple
     {
         public int GetScore (List<Card> cards)
         {
-            if (cards.Count() == 2)
+            if (IsHand(cards))
             {
                 return GetScoreHandCards(cards);
             }
@@ -21,8 +21,9 @@ namespace Nancy.Simple
             // Pärchen behandeln
             if (IsPair(cards) && GetSumCards(cards) > 20)
                 return 10;
-            if (IsPair(cards))
+            if (IsPair(cards)) {
                 return 8;
+            }
 
             // Höhe der Karte
             if (IsSameColor(cards) && GetSumCards(cards) > 25)
@@ -66,17 +67,27 @@ namespace Nancy.Simple
             {
                 return 9;
             }
+            // Drilling
             if (ContainsMulitpleCards(cards, 3))
             {
                 return 9;
             }
             if (ContainsTwoPair(cards))
             {
-                return 8;
+                return 8; 
             }
+            // Paar
             if (ContainsMulitpleCards(cards, 2))
             {
-                return 7;
+                if(GetSumCards(cards) > 20)
+                {
+                    return 7;
+                }
+                if(IsFlop(cards))
+                {
+                   return 5;
+                }
+                return 2;
             }
             return 0;
         }
@@ -115,6 +126,23 @@ namespace Nancy.Simple
         {
             var groupList = cards.GroupBy(c => c.Value);
             return groupList.Count(g => g.Count() == 2) == 2;
+        }
+
+        private static bool IsHand(List<Card> cards)
+        {
+            return cards.Count == 2;
+        }
+        private static bool IsFlop(List<Card> cards)
+        {
+            return cards.Count == 5;
+        }
+        private static bool IsRiver(List<Card> cards)
+        {
+            return cards.Count == 6;
+        }
+        private static bool IsTurn(List<Card> cards)
+        {
+            return cards.Count == 7;
         }
     }
 }

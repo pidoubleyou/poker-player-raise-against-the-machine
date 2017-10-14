@@ -110,7 +110,7 @@ namespace PokerTest
                 }
             };
 
-            var actual = target.calculate(gameState, 10, betLevel);
+            var actual = target.calculate(gameState, 10, new HeadsUpBetLevel());
 
             Assert.AreEqual(877, actual);
         }
