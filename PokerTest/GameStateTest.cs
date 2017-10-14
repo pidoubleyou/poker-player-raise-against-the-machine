@@ -19,9 +19,15 @@ namespace PokerTest
             {
                 Players = new PlayerInfo[]
                 {
-                    
+                    new PlayerInfo { Name = "X" }, 
+                    new PlayerInfo { Name = Constants.PlayerName }
                 }
             };
+
+            var actual = gameState.Self;
+
+            Assert.IsNotNull(actual);
+            Assert.AreEqual(Constants.PlayerName, actual.Name);
         }
     }
 }

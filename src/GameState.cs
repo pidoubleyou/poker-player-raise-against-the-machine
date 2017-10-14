@@ -27,5 +27,11 @@ namespace Nancy.Simple
         public int CurrentBuyIn { get; set; }
         public int Pot { get; set; }
         public PlayerInfo[] Players { get; set; }
+
+        public PlayerInfo Self { get
+            {
+                return Players.FirstOrDefault(x => x.Name == Constants.PlayerName);
+            }
+        }
     }
 }
