@@ -21,7 +21,7 @@ namespace PokerTest
 
             var score = target.GetScore(cards);
 
-            Assert.AreEqual(State.AllIn, score);
+            Assert.AreEqual(10, score);
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace PokerTest
 
             var score = target.GetScore(cards);
 
-            Assert.AreEqual(State.Raise, score);
+            Assert.AreEqual(8, score);
         }
 
         [TestMethod]
@@ -47,7 +47,7 @@ namespace PokerTest
 
             var score = target.GetScore(cards);
 
-            Assert.AreEqual(State.Raise, score);
+            Assert.AreEqual(8, score);
         }
 
         [TestMethod]
@@ -60,7 +60,7 @@ namespace PokerTest
 
             var score = target.GetScore(cards);
 
-            Assert.AreEqual(State.Fold, score);
+            Assert.AreEqual(0, score);
         }
         [TestMethod]
         public void GetScore_SameColor_AllIn()
@@ -72,7 +72,7 @@ namespace PokerTest
 
             var score = target.GetScore(cards);
 
-            Assert.AreEqual(State.AllIn, score);
+            Assert.AreEqual(10, score);
         }
         [TestMethod]
         public void GetScore_SameColor_Raise()
@@ -84,7 +84,7 @@ namespace PokerTest
 
             var score = target.GetScore(cards);
 
-            Assert.AreEqual(State.Raise, score);
+            Assert.AreEqual(8, score);
         }
     }
 }
