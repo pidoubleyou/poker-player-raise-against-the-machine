@@ -29,11 +29,11 @@ namespace Nancy.Simple
             if (IsSameColor(cards) && GetSumCards(cards) > 25)
                 return 8;
             if (IsSameColor(cards) && GetSumCards(cards) > 12)
-                return 7;
+                return 6;
             if (GetSumCards(cards) > 25)
                 return 7;
             if (GetSumCards(cards) > 21)
-                return 6;
+                return 5;
 
             return 0;
         }
@@ -55,11 +55,16 @@ namespace Nancy.Simple
 
         private int GetScoreAllCards(List<Card> cards)
         {
+            var communityCards = cards.Skip(2).ToList();
             if (ContainsMulitpleCards(cards, 4))
             {
                 return 10;
             }
             if (ContainsFlush(cards))
+            {
+                return 10;
+            }
+            if (ContainsFullHouse(cards))
             {
                 return 10;
             }
@@ -79,6 +84,11 @@ namespace Nancy.Simple
             // Paar
             if (ContainsMulitpleCards(cards, 2))
             {
+                if(ContainsMulitpleCards(communityCards, 2))
+                {
+                    return 0;
+                }
+
                 if(GetSumCards(cards) > 20)
                 {
                     return 7;
@@ -121,6 +131,18 @@ namespace Nancy.Simple
         {
             var groupList = cards.GroupBy(c => c.Value);
             return groupList.Any(g => g.Count() == countKind);
+        }
+        public bool ContainsFullHouse(List<Card> cards)
+        {
+            var groupList = cards.GroupBy(c => c.Value);
+            var drilling = groupList.Where(g => g.Count() == 3).FirstOrDefault();
+            if (drilling == null)
+                return false;
+
+            var drillingValue = drilling.First().Value;
+            var pair = groupList.Where(g => g.Count() >= 2 && g.First().Value != drillingValue).FirstOrDefault();
+
+            return pair != null;
         }
         public bool ContainsTwoPair(List<Card> cards)
         {
