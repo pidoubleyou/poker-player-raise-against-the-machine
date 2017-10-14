@@ -66,7 +66,7 @@ namespace Nancy.Simple
             {
                 return 8;
             }
-            return 3;
+            return 0;
         }
 
         public bool ContainsMulitpleCards(List<Card> cards, int countKind)
