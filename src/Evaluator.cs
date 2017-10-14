@@ -62,6 +62,10 @@ namespace Nancy.Simple
             {
                 return 10;
             }
+            if (ContainsStreet(cards))
+            {
+                return 9;
+            }
             if (ContainsMulitpleCards(cards, 3))
             {
                 return 9;
@@ -75,6 +79,25 @@ namespace Nancy.Simple
                 return 7;
             }
             return 0;
+        }
+
+        public bool ContainsStreet(List<Card> cards)
+        {
+            return cards.Any(c => IsStreet(cards, c.Value));
+        }
+
+        private bool IsStreet(List<Card> cards, int startValue)
+        {
+            if (!cards.Any(c => c.Value == startValue + 1))
+                return false;
+            if (!cards.Any(c => c.Value == startValue + 2))
+                return false;
+            if (!cards.Any(c => c.Value == startValue + 3))
+                return false;
+            if (!cards.Any(c => c.Value == startValue + 4))
+                return false;
+
+            return true;
         }
 
         public bool ContainsFlush(List<Card> cards)

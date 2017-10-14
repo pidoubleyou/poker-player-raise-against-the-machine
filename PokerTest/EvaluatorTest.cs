@@ -232,5 +232,39 @@ namespace PokerTest
 
             Assert.IsFalse(score);
         }
+        [TestMethod]
+        public void ContainsStreet_Street_True()
+        {
+            var target = new Evaluator();
+            var cards = new List<Card>
+            {
+                new Card { Rank = "7", Suit = "Pik" },
+                new Card { Rank = "10", Suit = "Pik" },
+                new Card { Rank = "8", Suit = "Pik" },
+                new Card { Rank = "J", Suit = "Pik" },
+                new Card { Rank = "9", Suit = "Pik" }
+            };
+
+            var score = target.ContainsStreet(cards);
+
+            Assert.IsTrue(score);
+        }
+        [TestMethod]
+        public void ContainsStreet_NoStreet_False()
+        {
+            var target = new Evaluator();
+            var cards = new List<Card>
+            {
+                new Card { Rank = "A", Suit = "Pik" },
+                new Card { Rank = "7", Suit = "XY" },
+                new Card { Rank = "8", Suit = "Pik" },
+                new Card { Rank = "9", Suit = "Pik" },
+                new Card { Rank = "K", Suit = "Pik" }
+            };
+
+            var score = target.ContainsStreet(cards);
+
+            Assert.IsFalse(score);
+        }
     }
 }
