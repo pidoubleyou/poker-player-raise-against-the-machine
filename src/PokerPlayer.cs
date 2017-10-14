@@ -5,7 +5,7 @@ namespace Nancy.Simple
 {
 	public static class PokerPlayer
 	{
-		public static readonly string VERSION = "Playing from Dusk till Dawn";
+		public static readonly string VERSION = "I can fold, go all in and raise";
 
 		public static int BetRequest(JObject gameStateJson)
 		{
@@ -15,7 +15,7 @@ namespace Nancy.Simple
             var eval = new Evaluator();
             var calculator = new BetCalculator();
             var state = eval.GetScore(gameState.Self.Cards);
-            return calculator.calculate(state);
+            return calculator.calculate(gameState, state);
 		}
 
 		public static void ShowDown(JObject gameState)
