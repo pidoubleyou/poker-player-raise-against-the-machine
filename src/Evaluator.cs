@@ -40,7 +40,7 @@ namespace Nancy.Simple
 
         public static int GetSumCards(Card[] cards)
         {
-            return 10;
+            return cards[0].Value + cards[1].Value;
         }
     }
 }
