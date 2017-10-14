@@ -6,6 +6,13 @@ using System.Text;
 
 namespace Nancy.Simple
 {
+    public enum State
+     {
+        Fold,
+        Call,
+        Raise,
+        AllIn
+    }
     public class Card
     {
         public string Rank { get; set; }
